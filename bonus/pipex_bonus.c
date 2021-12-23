@@ -6,7 +6,7 @@
 /*   By: hbourkan <hbourkan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 10:13:36 by hbourkan          #+#    #+#             */
-/*   Updated: 2021/12/21 12:08:10 by hbourkan         ###   ########.fr       */
+/*   Updated: 2021/12/23 13:06:26 by hbourkan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		if (ft_strnstr(argv[1], "here_doc", 8))
 		{
-			if (argc == 6)
+			if (argc == 6 && ft_strlen(argv[1]) == 8)
 			{
 				pipex_heredoc(argc, argv, envp, &pipi_doc);
 				free_all2(&pipi_doc);

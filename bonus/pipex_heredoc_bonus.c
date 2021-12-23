@@ -6,7 +6,7 @@
 /*   By: hbourkan <hbourkan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:27:36 by hbourkan          #+#    #+#             */
-/*   Updated: 2021/12/21 12:24:15 by hbourkan         ###   ########.fr       */
+/*   Updated: 2021/12/23 13:10:41 by hbourkan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 static void	doc_prompt(int *pipe_doc, char **line, char *argv)
 {
 	*line = ft_strdup("");
+	if (!(*line))
+		exit(1);
 	write(1, "here_doc>", 9);
 	while (*line)
 	{
+		free(*line);
 		*line = get_next_line(0);
 		if (ft_strncmp(*line, argv, ft_strlen(argv)) == 0)
 		{
@@ -29,7 +32,6 @@ static void	doc_prompt(int *pipe_doc, char **line, char *argv)
 		}
 		write(1, "here_doc>", 9);
 		write(pipe_doc[1], *line, ft_strlen(*line));
-		free(*line);
 	}
 	if (close(pipe_doc[1]) == -1)
 	{
